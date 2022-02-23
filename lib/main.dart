@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonton_app/pages/home_page.dart';
+import 'package:nonton_app/pages/main_page.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
 import 'package:nonton_app/pages/person_detail_page.dart';
 import 'package:nonton_app/pages/see_all_movies_page.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const HomePage(),
+        home: const MainPage(),
         routes: {
           MovieDetailPage.routeName: (context) => const MovieDetailPage(),
           TvDetailPage.routeName: (context) => const TvDetailPage(),

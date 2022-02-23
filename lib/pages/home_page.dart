@@ -96,17 +96,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
     return Scaffold(
       backgroundColor: blackColor,
-      appBar: AppBar(
-        backgroundColor: blackColor,
-        elevation: 0,
-        title: Text(
-          'NONTON',
-          style: whiteTextStyle.copyWith(
-            fontWeight: bold,
-          ),
-        ),
-        centerTitle: true,
-      ),
       body: ListView(
         children: [
           SizedBox(
