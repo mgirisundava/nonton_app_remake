@@ -18,7 +18,7 @@ class SeeAllProvider with ChangeNotifier {
 
   Future<void> getSeeAllMovies(String category, int pageIndex) async {
     Uri url = Uri.parse(
-        'https://api.themoviedb.org/3/movie/$category?api_key=$apiKey&language=en-USpage=$pageIndex');
+        'https://api.themoviedb.org/3/movie/$category?api_key=$apiKey&language=en-US&page=$pageIndex');
 
     try {
       final response = await http.get(url);
