@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nonton_app/pages/person_detail_page.dart';
 import 'package:nonton_app/pages/see_all_credits_page.dart';
+import 'package:nonton_app/pages/see_all_seasons_page.dart';
 import 'package:nonton_app/providers/tv_detail_provider.dart';
 import 'package:nonton_app/widgets/see_all_text.dart';
 import 'package:provider/provider.dart';
@@ -325,7 +326,15 @@ class TvDetailPage extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const SeeAllText(),
+                            GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    SeeAllSeasonsPage.routeName,
+                                    arguments: tvId,
+                                  );
+                                },
+                                child: const SeeAllText()),
                           ],
                         ),
                       ),

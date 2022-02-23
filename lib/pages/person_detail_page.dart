@@ -1,11 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:nonton_app/providers/people_detail_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../theme.dart';
 import '../widgets/shimmer_item.dart';
@@ -20,10 +18,6 @@ class PersonDetailPage extends StatelessWidget {
     final personDetailProvider =
         Provider.of<PersonDetailProvider>(context, listen: false);
     final personId = ModalRoute.of(context)!.settings.arguments as int;
-
-    void _launchUrl(String url) async => await canLaunch(url)
-        ? await launch(url)
-        : throw 'Could not launch $url';
 
     return Scaffold(
       backgroundColor: blackColor,

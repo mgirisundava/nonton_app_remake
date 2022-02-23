@@ -1,8 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nonton_app/models/movie_model.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
 import 'package:nonton_app/providers/see_all_provider.dart';
 import 'package:nonton_app/theme.dart';
