@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nonton_app/pages/person_detail_page.dart';
+import 'package:nonton_app/pages/see_all_credits_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../theme.dart';
 import '../widgets/credit_item.dart';
@@ -396,9 +397,14 @@ class MovieDetailPage extends StatelessWidget {
                             ),
                             const Spacer(),
                             GestureDetector(
-                              onTap: () {},
-                              child: const SeeAllText(),
-                            ),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    SeeAllCreditsPage.routeName,
+                                    arguments: [movieId, 'movie'],
+                                  );
+                                },
+                                child: const SeeAllText()),
                           ],
                         ),
                       ),

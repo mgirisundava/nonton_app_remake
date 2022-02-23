@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/credit_model.dart';
 import '../models/movie_model.dart';
 
 class SeeAllProvider with ChangeNotifier {
@@ -48,6 +49,48 @@ class SeeAllProvider with ChangeNotifier {
         },
       );
       _seeAllMovies = _loadedSeeAllMovies;
+      notifyListeners();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+// ignore: todo
+// TODO : SEE ALL CREDIT
+
+  List<CreditModel> _seeAllCredits = [];
+  List<CreditModel> get seeAllCredits => _seeAllCredits;
+  int get seeAllCreditsLength => _seeAllCredits.length;
+
+  Future<void> getSeeAllCredits(int id, String mediaType) async {
+    Uri url = Uri.parse(
+        'https://api.themoviedb.org/3/$mediaType/$id/credits?api_key=$apiKey&language=en-US');
+
+    try {
+      final response = await http.get(url);
+      final extractedData =
+          (json.decode(response.body) as Map<String, dynamic>)["cast"];
+
+      final List<CreditModel> _loadedSeeAllCredit = [];
+      if (extractedData == null) {
+        return;
+      }
+      extractedData.forEach(
+        (value) {
+          _loadedSeeAllCredit.add(
+            CreditModel(
+              id: value['id'],
+              profilePath: value['profile_path'] == null
+                  ? null
+                  : 'https://image.tmdb.org/t/p/w500' + value["profile_path"],
+              name: value['name'] ?? value['original_name'],
+              character: value['character'] ?? value['job'],
+              job: value['job'] ?? 'No Data',
+            ),
+          );
+        },
+      );
+      _seeAllCredits = _loadedSeeAllCredit;
       notifyListeners();
     } catch (e) {
       rethrow;
