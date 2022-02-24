@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
 import 'package:nonton_app/pages/see_all_movies_page.dart';
+import 'package:nonton_app/pages/see_all_tv_page.dart';
 import 'package:nonton_app/pages/tv_detail_page.dart';
 import '../providers/all_trending_provider.dart';
 import '../providers/movies_provider.dart';
@@ -446,7 +447,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SeeAllText(),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      SeeAllTvPage.routeName,
+                      arguments: 'popular',
+                    );
+                  },
+                  child: const SeeAllText(),
+                ),
               ],
             ),
           ),
@@ -534,7 +544,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         height: 28,
                       ),
                       const Spacer(),
-                      const SeeAllText(),
                     ],
                   ),
                 ),
@@ -589,7 +598,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     } else {
                       return ListView.builder(
                         primary: false,
-                        itemCount: 5,
+                        itemCount: 3,
                         itemBuilder: ((context, index) {
                           return GestureDetector(
                             onTap: () {
@@ -639,7 +648,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     } else {
                       return ListView.builder(
                         primary: false,
-                        itemCount: 5,
+                        itemCount: 3,
                         itemBuilder: ((context, index) {
                           return GestureDetector(
                             onTap: () {

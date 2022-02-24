@@ -5,6 +5,7 @@ import 'package:nonton_app/pages/person_detail_page.dart';
 import 'package:nonton_app/pages/see_all_credits_page.dart';
 import 'package:nonton_app/pages/see_all_movies_page.dart';
 import 'package:nonton_app/pages/see_all_seasons_page.dart';
+import 'package:nonton_app/pages/see_all_tv_page.dart';
 import 'package:nonton_app/pages/tv_detail_page.dart';
 import 'package:nonton_app/providers/all_trending_provider.dart';
 import 'package:nonton_app/providers/movie_detail_provider.dart';
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
           SeeAllMoviesPage.routeName: (context) => const SeeAllMoviesPage(),
           SeeAllCreditsPage.routeName: (context) => const SeeAllCreditsPage(),
           SeeAllSeasonsPage.routeName: (context) => const SeeAllSeasonsPage(),
+          SeeAllTvPage.routeName: (context) => const SeeAllTvPage(),
         },
       ),
     );

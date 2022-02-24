@@ -93,7 +93,7 @@ class RatingAndPopularityItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AutoSizeText(
-                  '$popularity',
+                  '${popularity.roundToDouble()}',
                   style: orangeTextStyle.copyWith(
                     fontSize: 18,
                     fontWeight: semiBold,

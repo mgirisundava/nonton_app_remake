@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:nonton_app/models/tv_model.dart';
 
 import '../models/credit_model.dart';
 import '../models/movie_model.dart';
@@ -10,7 +11,7 @@ class SeeAllProvider with ChangeNotifier {
   final String apiKey = 'ab3a67a225bfc7da852014189004fcb5';
 
 // ignore: todo
-// TODO : POPULAR MOVIE
+// TODO : SEE ALL MOVIES
 
   List<MovieModel> _seeAllMovies = [];
   List<MovieModel> get seeAllMovies => _seeAllMovies;
@@ -49,6 +50,52 @@ class SeeAllProvider with ChangeNotifier {
         },
       );
       _seeAllMovies = _loadedSeeAllMovies;
+      notifyListeners();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+// ignore: todo
+// TODO : SEE ALL MOVIES
+
+  List<TvModel> _seeAllTv = [];
+  List<TvModel> get seeAllTv => _seeAllTv;
+  int get seeAllTvLength => _seeAllTv.length;
+
+  Future<void> getSeeAllTv(String category, int pageIndex) async {
+    Uri url = Uri.parse(
+        'https://api.themoviedb.org/3/tv/$category?api_key=$apiKey&language=en-US&page=$pageIndex');
+
+    try {
+      final response = await http.get(url);
+      final extractedData =
+          (json.decode(response.body) as Map<String, dynamic>)["results"];
+
+      final List<TvModel> _loadedSeeAllMovies = [];
+      if (extractedData == null) {
+        return;
+      }
+      extractedData.forEach(
+        (value) {
+          _loadedSeeAllMovies.add(
+            TvModel(
+              id: value['id'],
+              posterPath: value['poster_path'] == null
+                  ? null
+                  : 'https://image.tmdb.org/t/p/w500' + value["poster_path"],
+              name: value['name'] ?? value['original_name'],
+              backdropPath: value['backdrop_path'] == null
+                  ? null
+                  : 'https://image.tmdb.org/t/p/w500' + value["backdrop_path"],
+              originalName: value['original_name'] ?? value['No Data'],
+              voteAverage: value['vote_average'] ?? 0.0,
+              voteCount: value['vote_count'] ?? 0,
+            ),
+          );
+        },
+      );
+      _seeAllTv = _loadedSeeAllMovies;
       notifyListeners();
     } catch (e) {
       rethrow;

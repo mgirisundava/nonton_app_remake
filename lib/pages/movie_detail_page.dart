@@ -506,25 +506,29 @@ class DetailText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AutoSizeGroup autoSizeGroup1 = AutoSizeGroup();
+
     return Row(
       children: [
         AutoSizeText(
           title!,
           style: greyTextStyle.copyWith(
-            fontSize: 16,
+            fontSize: 14,
           ),
-          maxFontSize: 16,
+          maxFontSize: 14,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
+          group: autoSizeGroup1,
         ),
         AutoSizeText(
           value!,
           style: whiteTextStyle.copyWith(
-            fontSize: 16,
+            fontSize: 14,
           ),
-          maxFontSize: 16,
+          maxFontSize: 14,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
+          group: autoSizeGroup1,
         ),
       ],
     );

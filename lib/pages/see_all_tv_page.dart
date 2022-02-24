@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:nonton_app/pages/movie_detail_page.dart';
+import 'package:nonton_app/pages/tv_detail_page.dart';
 import 'package:nonton_app/providers/see_all_provider.dart';
 import 'package:nonton_app/theme.dart';
 import 'package:nonton_app/widgets/poster_grid_item.dart';
 import 'package:provider/provider.dart';
 
-class SeeAllMoviesPage extends StatefulWidget {
-  const SeeAllMoviesPage({Key? key}) : super(key: key);
-  static const routeName = 'see-all-movies';
+class SeeAllTvPage extends StatefulWidget {
+  const SeeAllTvPage({Key? key}) : super(key: key);
+  static const routeName = 'see-all-tv';
 
   @override
-  State<SeeAllMoviesPage> createState() => _SeeAllMoviesPageState();
+  State<SeeAllTvPage> createState() => _SeeAllTvPageState();
 }
 
-class _SeeAllMoviesPageState extends State<SeeAllMoviesPage> {
+class _SeeAllTvPageState extends State<SeeAllTvPage> {
   int currentPage = 1;
 
   @override
   Widget build(BuildContext context) {
     final seeAllProvider = Provider.of<SeeAllProvider>(context, listen: false);
-    final movieCategory = ModalRoute.of(context)!.settings.arguments as String;
+    final tvCategory = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       backgroundColor: blackColor,
       appBar: AppBar(
         title: Text(
-          movieCategory.toUpperCase(),
+          tvCategory.toUpperCase(),
           style: whiteTextStyle.copyWith(
             fontWeight: bold,
           ),
@@ -34,7 +34,7 @@ class _SeeAllMoviesPageState extends State<SeeAllMoviesPage> {
         elevation: 0,
       ),
       body: FutureBuilder(
-        future: seeAllProvider.getSeeAllMovies(movieCategory, 1),
+        future: seeAllProvider.getSeeAllTv(tvCategory, 1),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -63,23 +63,22 @@ class _SeeAllMoviesPageState extends State<SeeAllMoviesPage> {
                     onTap: () {
                       Navigator.pushNamed(
                         context,
-                        MovieDetailPage.routeName,
-                        arguments: seeAllProvider.seeAllMovies[index].id,
+                        TvDetailPage.routeName,
+                        arguments: seeAllProvider.seeAllTv[index].id,
                       );
                     },
                     child: PosterGridItem(
                       index: index,
-                      posterPath: seeAllProvider.seeAllMovies[index].posterPath,
-                      title: seeAllProvider.seeAllMovies[index].title!,
-                      voteAverage:
-                          seeAllProvider.seeAllMovies[index].voteAverage!,
+                      posterPath: seeAllProvider.seeAllTv[index].posterPath,
+                      title: seeAllProvider.seeAllTv[index].name!,
+                      voteAverage: seeAllProvider.seeAllTv[index].voteAverage!,
                     ),
                   ),
-                  itemCount: seeAllProvider.seeAllMoviesLength,
+                  itemCount: seeAllProvider.seeAllTvLength,
                 ),
                 onNotification: (notification) {
                   // currentPage = currentPage + 1;
-                  // seeAllProvider.getSeeAllMovies(
+                  // seeAllProvider.getseeAllTv(
                   //   movieCategory,
                   //   currentPage,
                   // );
