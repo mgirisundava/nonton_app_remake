@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonton_app/pages/login_page.dart';
 import 'package:nonton_app/pages/main_page.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
 import 'package:nonton_app/pages/person_detail_page.dart';
@@ -6,8 +7,10 @@ import 'package:nonton_app/pages/see_all_credits_page.dart';
 import 'package:nonton_app/pages/see_all_movies_page.dart';
 import 'package:nonton_app/pages/see_all_seasons_page.dart';
 import 'package:nonton_app/pages/see_all_tv_page.dart';
+import 'package:nonton_app/pages/splash_page.dart';
 import 'package:nonton_app/pages/tv_detail_page.dart';
 import 'package:nonton_app/providers/all_trending_provider.dart';
+import 'package:nonton_app/providers/auth_provider.dart';
 import 'package:nonton_app/providers/movie_detail_provider.dart';
 import 'package:nonton_app/providers/movies_provider.dart';
 import 'package:nonton_app/providers/people_detail_provider.dart';
@@ -27,6 +30,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+        ),
         ChangeNotifierProvider(
           create: (context) => MoviesProvider(),
         ),
@@ -51,8 +57,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const MainPage(),
+        home: SplashPage(),
         routes: {
+          MainPage.routeName: (context) => const MainPage(),
           MovieDetailPage.routeName: (context) => const MovieDetailPage(),
           TvDetailPage.routeName: (context) => const TvDetailPage(),
           PersonDetailPage.routeName: (context) => const PersonDetailPage(),
@@ -60,6 +67,7 @@ class MyApp extends StatelessWidget {
           SeeAllCreditsPage.routeName: (context) => const SeeAllCreditsPage(),
           SeeAllSeasonsPage.routeName: (context) => const SeeAllSeasonsPage(),
           SeeAllTvPage.routeName: (context) => const SeeAllTvPage(),
+          LoginPage.routeName: (context) => const LoginPage(),
         },
       ),
     );

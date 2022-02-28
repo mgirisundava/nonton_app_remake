@@ -26,11 +26,15 @@ class SeeAllCreditsPage extends StatelessWidget {
             fontWeight: bold,
           ),
         ),
+        centerTitle: true,
         backgroundColor: blackColor,
         elevation: 0,
       ),
       body: FutureBuilder(
-        future: seeAllProvider.getSeeAllCredits(arguments[0], arguments[1]),
+        future: seeAllProvider.getSeeAllCredits(
+          arguments[0],
+          arguments[1],
+        ),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -64,7 +68,7 @@ class SeeAllCreditsPage extends StatelessWidget {
                   },
                   child: Container(
                     margin: EdgeInsets.only(
-                      top: index == 0 || index == 1 || index == 2 ? 10 : 0,
+                      top: index == 0 || index == 1 ? 10 : 0,
                       bottom: 10,
                     ),
                     decoration: BoxDecoration(
@@ -112,35 +116,35 @@ class SeeAllCreditsPage extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 1 / 7,
                             decoration: BoxDecoration(
                               color: lightBlackColor.withOpacity(0.8),
-                            ),
-                            child: Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AutoSizeText(
-                                    seeAllProvider.seeAllCredits[index].name,
-                                    style: whiteTextStyle.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: semiBold,
-                                    ),
-                                    maxFontSize: 16,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  AutoSizeText(
-                                    seeAllProvider
-                                        .seeAllCredits[index].character,
-                                    style: whiteTextStyle.copyWith(
-                                      fontSize: 14,
-                                    ),
-                                    maxFontSize: 14,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  )
-                                ],
+                              borderRadius: const BorderRadius.vertical(
+                                bottom: Radius.circular(10),
                               ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AutoSizeText(
+                                  seeAllProvider.seeAllCredits[index].name,
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 16,
+                                    fontWeight: semiBold,
+                                  ),
+                                  maxFontSize: 16,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                ),
+                                AutoSizeText(
+                                  seeAllProvider.seeAllCredits[index].character,
+                                  style: whiteTextStyle.copyWith(
+                                    fontSize: 14,
+                                  ),
+                                  maxFontSize: 14,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
+                                )
+                              ],
                             ),
                           ),
                         )

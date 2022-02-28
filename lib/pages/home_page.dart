@@ -164,6 +164,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                     null
                                 ? SizedBox(
                                     width: double.infinity,
+                                    height: double.infinity,
                                     child: CachedNetworkImage(
                                       imageUrl: allTrendingProvider
                                           .allTrending[itemIndex].backdropPath!,

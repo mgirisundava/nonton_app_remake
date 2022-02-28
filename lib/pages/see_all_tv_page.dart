@@ -30,6 +30,7 @@ class _SeeAllTvPageState extends State<SeeAllTvPage> {
             fontWeight: bold,
           ),
         ),
+        centerTitle: true,
         backgroundColor: blackColor,
         elevation: 0,
       ),

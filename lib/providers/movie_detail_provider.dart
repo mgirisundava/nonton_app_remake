@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:nonton_app/models/movie_detail_model.dart';
 import 'package:nonton_app/models/video_model.dart';
 
+import '../config/const.dart';
 import '../models/credit_model.dart';
 import '../models/review_model.dart';
 
@@ -21,9 +22,8 @@ class MovieDetailProvider with ChangeNotifier {
   Future<void> getMovieDetail(int id) async {
     try {
       final res = await http.get(
-        Uri.parse(
-            'https://api.themoviedb.org/3/movie/$id?api_key=$apiKey&language=en-US'),
-      );
+          Uri.parse('$Const.baseUrl/movie/$id?api_key=$apiKey&language=en-US'),
+          headers: {});
       final resData = jsonDecode(res.body);
       _movieDetail = resData;
 

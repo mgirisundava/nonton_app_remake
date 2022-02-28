@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nonton_app/pages/home_page.dart';
 import 'package:nonton_app/pages/search_page.dart';
+import 'package:nonton_app/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../theme.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  static const routeName = 'main-page';
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -41,6 +45,8 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Provider.of<AuthProvider>(context).signUp();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: blackColor,

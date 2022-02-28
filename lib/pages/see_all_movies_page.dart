@@ -30,6 +30,7 @@ class _SeeAllMoviesPageState extends State<SeeAllMoviesPage> {
             fontWeight: bold,
           ),
         ),
+        centerTitle: true,
         backgroundColor: blackColor,
         elevation: 0,
       ),
