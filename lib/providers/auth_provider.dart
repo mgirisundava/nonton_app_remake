@@ -24,7 +24,12 @@ class AuthProvider with ChangeNotifier {
       final responseData = jsonDecode(response.body) as Map<String, dynamic>;
 
       if (response.statusCode == 200) {
-        login(context, username, password, responseData['request_token']);
+        login(
+          context,
+          username,
+          password,
+          responseData['request_token'],
+        );
       } else {
         throw responseData["status_message"];
       }
@@ -66,7 +71,6 @@ class AuthProvider with ChangeNotifier {
       final response = await http.post(url, body: {
         'request_token': requestToken,
       });
-      print(response);
       if (response.statusCode == 200) {
         final sharedPref = await SharedPreferences.getInstance();
         final responseData = jsonDecode(response.body) as Map<String, dynamic>;
@@ -74,6 +78,7 @@ class AuthProvider with ChangeNotifier {
           '@sessionId',
           responseData['session_id'],
         );
+
         if (requestToken!.isNotEmpty) {
           sharedPref.setString(
             '@requestToken',
@@ -87,5 +92,11 @@ class AuthProvider with ChangeNotifier {
     } catch (e) {
       throw e;
     }
+  }
+
+  Future<void> logout() async {
+    final pref = await SharedPreferences.getInstance();
+    pref.clear();
+    notifyListeners();
   }
 }

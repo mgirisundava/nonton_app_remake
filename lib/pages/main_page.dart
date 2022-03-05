@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonton_app/pages/home_page.dart';
+import 'package:nonton_app/pages/log_out_page.dart';
 import 'package:nonton_app/pages/search_page.dart';
 import 'package:nonton_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _widgetOptions = <Widget>[
     const HomePage(),
     const SearchPage(),
+    const LogOutPage(),
   ];
 
   late PageController _pageController;
@@ -74,6 +76,10 @@ class _MainPageState extends State<MainPage> {
           BottomNavigationBarItem(
               icon: const Icon(Icons.search),
               label: "Search",
+              backgroundColor: lightBlackColor),
+          BottomNavigationBarItem(
+              icon: const Icon(Icons.logout),
+              label: "Log Out",
               backgroundColor: lightBlackColor),
         ],
         currentIndex: _currentIndex,

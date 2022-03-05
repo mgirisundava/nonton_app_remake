@@ -22,7 +22,8 @@ class MovieDetailProvider with ChangeNotifier {
   Future<void> getMovieDetail(int id) async {
     try {
       final res = await http.get(
-          Uri.parse('$Const.baseUrl/movie/$id?api_key=$apiKey&language=en-US'),
+          Uri.parse(
+              '${Const.baseUrl}/movie/$id?api_key=$apiKey&language=en-US'),
           headers: {});
       final resData = jsonDecode(res.body);
       _movieDetail = resData;

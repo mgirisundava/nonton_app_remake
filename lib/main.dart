@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nonton_app/pages/log_out_page.dart';
 import 'package:nonton_app/pages/login_page.dart';
 import 'package:nonton_app/pages/main_page.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
@@ -57,7 +58,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SplashPage(),
+        home: const SplashPage(),
         routes: {
           MainPage.routeName: (context) => const MainPage(),
           MovieDetailPage.routeName: (context) => const MovieDetailPage(),
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
           SeeAllSeasonsPage.routeName: (context) => const SeeAllSeasonsPage(),
           SeeAllTvPage.routeName: (context) => const SeeAllTvPage(),
           LoginPage.routeName: (context) => const LoginPage(),
+          LogOutPage.routeName: (context) => const LogOutPage(),
         },
       ),
     );

@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:nonton_app/pages/login_page.dart';
 import 'package:nonton_app/providers/auth_provider.dart';
+import 'package:nonton_app/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +18,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkSession();
   }
@@ -32,7 +33,7 @@ class _SplashPageState extends State<SplashPage> {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Nonton App'),
+            title: const Text('Nonton App'),
             content: Text('$e'),
           ),
         );
@@ -46,8 +47,18 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: lightBlackColor,
       body: Center(
-        child: Text('Nonton App'),
+        child: AutoSizeText(
+          'nonton',
+          style: whiteTextStyle.copyWith(
+            fontSize: 32,
+            fontWeight: semiBold,
+          ),
+          maxFontSize: 32,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
     );
   }
