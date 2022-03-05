@@ -34,7 +34,7 @@ class AuthProvider with ChangeNotifier {
         throw responseData["status_message"];
       }
     } catch (e) {
-      throw (e);
+      throw e;
     }
   }
 
@@ -60,7 +60,7 @@ class AuthProvider with ChangeNotifier {
         throw responseData["status_message"];
       }
     } catch (e) {
-      throw e.toString();
+      e;
     }
   }
 

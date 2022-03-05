@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nonton_app/pages/home_page.dart';
-import 'package:nonton_app/pages/log_out_page.dart';
+import 'package:nonton_app/pages/logout_page.dart';
 import 'package:nonton_app/pages/search_page.dart';
 import 'package:nonton_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';

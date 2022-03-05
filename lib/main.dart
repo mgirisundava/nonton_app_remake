@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nonton_app/pages/log_out_page.dart';
+import 'package:nonton_app/pages/logout_page.dart';
 import 'package:nonton_app/pages/login_page.dart';
 import 'package:nonton_app/pages/main_page.dart';
 import 'package:nonton_app/pages/movie_detail_page.dart';
